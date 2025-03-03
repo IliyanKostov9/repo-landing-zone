@@ -29,7 +29,8 @@ jobs:
           # apt-get install -y yq 
           echo "Running gh"
           gh --version
-          chmod +x config/repositories
+          ls -l
+          chmod +x shells/github_secrets.sh*
           export env_array=("test" "ooeo")
           source shells/github_secrets.sh
           github_set_secret "${env_array[@]}"
