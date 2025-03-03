@@ -31,10 +31,9 @@ jobs:
           gh --version
           ls -l
           chmod +x shells/github_secrets.sh*
-          export env_array=("test" "ooeo")
           source shells/github_secrets.sh
-          github_set_secret "${env_array[@]}"
+          github_set_secret "GITGUARDIAN_API_KEY" "$GITGUARDIAN_API_KEY"
 
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITGUARDIAN_API_KE: ${{ secrets.GITGUARDIAN_API_KEY }}
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}

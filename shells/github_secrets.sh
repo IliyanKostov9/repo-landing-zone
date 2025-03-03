@@ -9,7 +9,9 @@ yaml_eval() {
 
 
 github_set_secret(){
-    local env_array=("$@")
+    local env_name=$1
+    local env_value=$2
+
     local owners_count=$(yaml_eval ".owners | length")
 
     for (( ow_count=0; ow_count < owners_count; ow_count++ )) do
@@ -28,13 +30,8 @@ github_set_secret(){
             if [[ "$secret" == "true" ]]; then
 
                 echo "Found secrets to sync for git $owner_name/$repo_name"
-                for env in "${env_array[@]}"; do
-                    gh secret set $env --repo "$owner_name/$repo_name" --body "$env"
-                done
+                gh secret set $env_name --repo "$owner_name/$repo_name" --body "$env_value"
             fi
         done
     done
 }
-
-# env_array=("test" "ooeo")
-# github_set_secret "${env_array[@]}"
