@@ -20,10 +20,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set foobar to cool
+        uses: mikefarah/yq@master
+
       - name: Sync secrets
         run: |
           echo "Setting up yq"
-          apt-get install -y yq 
+          # apt-get install -y yq 
           echo "Running gh"
           gh --version
           chmod +x config/repositories
