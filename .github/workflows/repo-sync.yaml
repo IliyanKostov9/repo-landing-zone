@@ -23,10 +23,9 @@ jobs:
       - name: Sync secrets
         run: |
           echo "Setting up yq"
-          apt install -y yq 
+          snap install yq --channel=v3/stable
           echo "Running gh"
           gh --version
-          ls -l
           chmod +x shells/github_secrets.sh
           shells/github_secrets.sh "GITGUARDIAN_API_KEY" "$GITGUARDIAN_API_KEY"
 
