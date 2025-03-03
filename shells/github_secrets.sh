@@ -30,10 +30,10 @@ github_set_secret(){
             if [[ "$secret" == "true" ]]; then
 
                 echo "Found secrets to sync for git $owner_name/$repo_name"
-                gh secret set $env_name --repo "$owner_name/$repo_name" --body "$env_value"
+                gh secret set "$env_name" --repo "$owner_name/$repo_name" --body "$env_value"
             fi
         done
     done
 }
 
-github_set_secret
+github_set_secret "$1" "$2"
