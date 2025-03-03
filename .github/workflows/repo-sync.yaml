@@ -23,7 +23,9 @@ jobs:
       - name: Sync secrets
         run: |
           echo "Setting up yq"
-          snap install yq --channel=v3/stable
+          add-apt-repository ppa:rmescandon/yq
+          apt update
+          apt install yq -y
           echo "Running gh"
           gh --version
           chmod +x shells/github_secrets.sh
