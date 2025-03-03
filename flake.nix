@@ -29,6 +29,13 @@
 
           git-hooks.hooks = {
             beautysh.enable = true;
+            shfmt = {
+              enable = true;
+              description = "Format shell files";
+              before = ''
+                beautysh */*.sh 
+              '';
+            };
           };
 
           devenv.root =
