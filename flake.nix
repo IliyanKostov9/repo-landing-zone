@@ -28,10 +28,7 @@
           name = "Landing zone project";
 
           git-hooks.hooks = {
-            shfmt =
-              {
-                enable = true;
-              };
+            beautysh.enable = true;
           };
 
           devenv.root =
