@@ -11,7 +11,7 @@ jobs:
   secret-sync:
     name: Secret scan
     runs-on: ubuntu-latest
-    container: ghcr.io/supportpal/github-gh-cli:2.67.0
+    # container: ghcr.io/supportpal/github-gh-cli:2.67.0
     if: ${{ github.actor != 'dependabot[bot]' }}
 
     steps:
@@ -23,9 +23,7 @@ jobs:
       - name: Sync secrets
         run: |
           echo "Setting up yq"
-          add-apt-repository ppa:rmescandon/yq
-          apt update
-          apt install yq -y
+          snap install yq --channel=v3/stable
           echo "Running gh"
           gh --version
           chmod +x shells/github_secrets.sh
