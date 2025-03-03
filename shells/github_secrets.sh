@@ -35,3 +35,5 @@ github_set_secret(){
         done
     done
 }
+
+github_set_secret
