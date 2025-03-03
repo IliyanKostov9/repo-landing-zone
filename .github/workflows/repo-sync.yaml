@@ -1,0 +1,30 @@
+name: Repos sync
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+jobs:
+  secret-sync:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup gh
+        uses: ghcr.io/supportpal/github-gh-cli
+
+      - name: Sync secrets
+        run: |
+          echo "Running gh"
+          gh --version
+          gh secret set MYSECRET --repo IliyanKostov9/repo-landing-zone --body "tests"

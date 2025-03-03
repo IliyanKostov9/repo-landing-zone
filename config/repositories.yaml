@@ -1,0 +1,4 @@
+---
+repos:
+  - name: .dotfiles
+    secret: true
