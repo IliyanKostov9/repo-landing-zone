@@ -26,11 +26,10 @@ github_set_secret(){
             local secret=$(yaml_eval "$repo_count_prefix.secret")
 
             if [[ "$secret" == "true" ]]; then
+
                 echo "Found secrets to sync for git $owner_name/$repo_name"
                 for env in "${env_array[@]}"; do
-                    echo "$env/n"
-
-                    gh secret set MYSECRET --repo "$owner_name/$repo_name" --body "tests"
+                    gh secret set $env --repo "$owner_name/$repo_name" --body "$env"
                 done
             fi
         done

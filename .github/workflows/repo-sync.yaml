@@ -23,7 +23,7 @@ jobs:
       - name: Sync secrets
         run: |
           echo "Setting up yq"
-          sudo apt-get install yq 
+          sudo apt-get install -y yq 
           echo "Running gh"
           gh --version
           chmod +x config/repositories
@@ -33,3 +33,4 @@ jobs:
 
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITGUARDIAN_API_KE: ${{ secrets.GITGUARDIAN_API_KEY }}
