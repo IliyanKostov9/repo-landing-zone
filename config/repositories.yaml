@@ -1,4 +1,10 @@
----
-repos:
-  - name: .dotfiles
-    secret: true
+owners:
+  - name: IliyanKostov9
+    repos:
+      - name: .dotfiles
+        secret: true
+
+  - name: Tu-Varna-2019
+    repos:
+      - name: masters-docs
+        secret: true

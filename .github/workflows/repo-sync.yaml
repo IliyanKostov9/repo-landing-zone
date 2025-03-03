@@ -1,3 +1,4 @@
+---
 name: Repos sync
 
 on:
@@ -5,9 +6,6 @@ on:
     branches:
       - master
   workflow_dispatch:
-
-env:
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 jobs:
   secret-sync:
@@ -24,8 +22,14 @@ jobs:
 
       - name: Sync secrets
         run: |
+          echo "Setting up yq"
+          sudo apt-get install yq 
           echo "Running gh"
           gh --version
-          gh secret set MYSECRET --repo IliyanKostov9/repo-landing-zone --body "tests"
+          chmod +x config/repositories
+          export env_array=("test" "ooeo")
+          source shells/github_secrets.sh
+          github_set_secret "${env_array[@]}"
+
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
