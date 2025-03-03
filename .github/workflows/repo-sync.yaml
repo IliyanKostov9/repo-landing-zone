@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 env:
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -21,7 +22,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup gh
-        uses: ghcr.io/supportpal/github-gh-cli
+        uses: ghcr.io/supportpal/github-gh-cli:2.67.0
 
       - name: Sync secrets
         run: |
