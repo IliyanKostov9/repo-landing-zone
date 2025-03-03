@@ -27,3 +27,5 @@ jobs:
           echo "Running gh"
           gh --version
           gh secret set MYSECRET --repo IliyanKostov9/repo-landing-zone --body "tests"
+        env:
+          GH_TOKEN: ${{ github.token }}
