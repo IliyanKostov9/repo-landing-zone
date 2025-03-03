@@ -27,15 +27,12 @@
         devenv.shells.default = {
           name = "Landing zone project";
 
-          # NOTE: First do devenv shell
-          # git-hooks.hooks = {
-          #   actionlint =
-          #     {
-          #       enable = true;
-          #       excludes = [ "docker-publish.yaml" ];
-          #     };
-          #   checkmake.enable = true;
-          # };
+          git-hooks.hooks = {
+            shfmt =
+              {
+                enable = true;
+              };
+          };
 
           devenv.root =
             let
