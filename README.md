@@ -1,24 +1,34 @@
-# Introduction
+# Landing zone for git repositories
 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. ## Getting Started TODO: Repository contains the agreed folder structure that the project should contain. Each folder reflects an Azure resource. Please remove unnecessary folders from the repository. 1. Installation process
+## Abstract 🚀
 
- TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
+This project serves as a central location for managing multiple repositories/organizations.
+The managmenet of new and exisitng repos is done mainly via github action and the desired state of the accounts are defined inside the `config` directory of the project.
 
-1. Installation process
-2. Software dependencies
-3. Latest releases
-4. API references
+## Available features 🧪
 
-1. Installation process
-Create virtual environment and install dependencies:
+1. Synchronize repo secrets
 
-## Build and Test
+## Project structure 🏗️ 
 
-TODO: Describe and show how to build your code and run the tests.
+```markdown
+.
+├── config
+├── flake.nix
+├── LICENSE
+├── README.md
+└── shells
 
-## Contribute
+```
 
-TODO: Explain how othe:r users and developers can contribute to make your code better.
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files: - [ASP.NET Core](https://github.com/aspnet/Home) - [Visual Studio Code](https://github.com/Microsoft/vscode)
+- **config**: Directory, containing the desired state of the member repositories. Example include synchronizing secrets for the repos
+- **flake.nix**: Development environment for testing features locally before pushing it remotely  
+- **shells**: Directory for defining the core logic for the github actions to perform the repo synchronization 
 
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Used technologies 🧑‍💻 
+
+- **yq**: For querying and manipulating yaml files on the config directory
+
+
+### 📃 License
+This product is licensed under [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html)
