@@ -92,4 +92,9 @@ github_set_secret(){
     done
 }
 
-github_set_secret "$1" "$2"
+# github_set_secret "$1" "$2"
+for arg in "$@"; do
+    IFS="=" read -r env_name env_value <<< "$arg"
+    echo "Setting secret for $env_name with value $env_value"
+    github_set_secret "$env_name" "$env_value"
+done
