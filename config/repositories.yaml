@@ -3,16 +3,25 @@ owners:
   - name: IliyanKostov9
     org: false
     repos:
-      - name: .dotfiles
-        secrets:
-          enable: true
-
-      - name: learn-pyspark
+      - name: nixos-config
         secrets:
           enable: true
           variables:
-            - GIT_PASSWORD
+            - GITGUARDIAN_API_KEY
             - GIT_USERNAME
+            - GIT_PASSWORD
+
+      - name: nvim-config
+        secrets:
+          enable: true
+          variables:
+            - GITGUARDIAN_API_KEY
+            - GIT_USERNAME
+            - GIT_PASSWORD
+
+      - name: .dotfiles
+        secrets:
+          enable: true
 
       - name: flake-templates
         secrets:
