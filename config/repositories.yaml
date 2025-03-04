@@ -1,3 +1,4 @@
+---
 owners:
   - name: IliyanKostov9
     org: false
@@ -10,6 +11,15 @@ owners:
         secrets:
           enable: true
           variables:
+            - GIT_PASSWORD
+            - GIT_UNERNAME
+
+      - name: flake-templates
+        secrets:
+          enable: true
+          variables:
+            - GITGUARDIAN_API_KEY
+            - GIT_UNERNAME
             - GIT_PASSWORD
 
   - name: Tu-Varna-2019
