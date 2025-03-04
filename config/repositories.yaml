@@ -12,14 +12,14 @@ owners:
           enable: true
           variables:
             - GIT_PASSWORD
-            - GIT_UNERNAME
+            - GIT_USERNAME
 
       - name: flake-templates
         secrets:
           enable: true
           variables:
             - GITGUARDIAN_API_KEY
-            - GIT_UNERNAME
+            - GIT_USERNAME
             - GIT_PASSWORD
 
   - name: Tu-Varna-2019
