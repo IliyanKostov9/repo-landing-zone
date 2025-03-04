@@ -24,8 +24,9 @@ jobs:
           echo "Setting up yq"
           sudo snap install yq --channel=v4/stable
           chmod +x shells/github_secrets.sh
-          shells/github_secrets.sh "GITGUARDIAN_API_KEY=${{ secrets.GITGUARDIAN_API_KEY }}" \
-                                   "GIT_PASSWORD=${{ secrets.GIT_PASSWORD }}" \
-                                   "SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}"
+          shells/github_secrets.sh \
+            "GITGUARDIAN_API_KEY" "${{ secrets.GITGUARDIAN_API_KEY }}" \
+            "GIT_PASSWORD" "${{ secrets.GIT_PASSWORD }}" \
+            "SONAR_TOKEN" "${{ secrets.SONAR_TOKEN }}"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
