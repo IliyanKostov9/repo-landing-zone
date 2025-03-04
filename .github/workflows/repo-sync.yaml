@@ -1,6 +1,5 @@
 ---
 name: Repos sync
-
 on:
   push:
     branches:
@@ -26,11 +25,11 @@ jobs:
           chmod +x shells/github_secrets.sh
           shells/github_secrets.sh \
             "GITGUARDIAN_API_KEY=${{ secrets.GITGUARDIAN_API_KEY }}" \
-            "GIT_PASSWORD='${{ secrets.GIT_PASSWORD }}'" \
-            "GIT_USERNAME='${{ secrets.GIT_USERNAME }}'" \
-            "SONAR_TOKEN='${{ secrets.SONAR_TOKEN }}'" \
-            "TF_API_TOKEN='${{ secrets.TF_API_TOKEN }}'" \
-            "TF_ORG='${{ secrets.TF_ORG }}'"
+            "GIT_PASSWORD=${{ secrets.GIT_PASSWORD }}" \
+            "GIT_USERNAME=${{ secrets.GIT_USERNAME }}" \
+            "SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}" \
+            "TF_API_TOKEN=${{ secrets.TF_API_TOKEN }}" \
+            "TF_ORG=${{ secrets.TF_ORG }}"
 
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

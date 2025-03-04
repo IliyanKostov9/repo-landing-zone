@@ -2,6 +2,7 @@
 
 yaml_eval() {
 	local obj_query=$1
+	# TODO: Don't hardcode this and pass it as an argument by github action
 	local yaml_file_path="config/repositories.yaml"
 
 	echo $(yq eval "$obj_query" $yaml_file_path)
@@ -42,7 +43,6 @@ remove_secret() {
 github_set_secret() {
 	local env_name=$1
 	local env_value=$2
-	echo "Setting secret for $env_name with value $env_value"
 	local owners_count=$(yaml_eval ".owners | length")
 
 	for ((ow_count = 0; ow_count < owners_count; ow_count++)); do
@@ -57,8 +57,10 @@ github_set_secret() {
 			set_org_secret "$env_name" "$env_value" "$owner_name"
 
 		elif [[ $owner_org == "false" ]]; then
+
 			echo "Owner $owner_name has disabled org for secret. Moving on..."
 			echo "Checking secrets for owner: $owner_name"
+
 			for ((rp_count = 0; rp_count < repos_count; rp_count++)); do
 				local repo_count_prefix="$owner_count_prefix.repos[$rp_count]"
 
