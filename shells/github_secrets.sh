@@ -23,11 +23,20 @@ set_org_secret(){
     gh secret set "$env_name" --org "$git_org" --visibility all  --body "$env_value"
 }
 
-remove_secret(){
+remove_secret() {
     local env_name=$1
     local git_repo=$2
 
-    gh secret delete "$env_name" --repo "$git_repo"
+    if gh secret delete "$env_name" --repo "$git_repo" 2>/dev/null; then
+        echo "Successfully deleted secret $env_name"
+    else
+        if [[ $? -eq 1 ]]; then
+            echo "Secret $env_name not found in repo $git_repo. Skipping deletion."
+        else
+            echo "Failed to delete secret $env_name. Error occurred."
+            exit 1
+        fi
+    fi
 }
 
 github_set_secret(){
