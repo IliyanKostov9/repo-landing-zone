@@ -1,10 +1,16 @@
 owners:
   - name: IliyanKostov9
+    org: false
     repos:
       - name: .dotfiles
-        secret: true
+        secrets:
+          enable: true
+
+      - name: learn-pyspark
+        secrets:
+          enable: true
+          variables:
+            - GIT_PASSWORD
 
   - name: Tu-Varna-2019
-    repos:
-      - name: masters-docs
-        secret: true
+    org: true
