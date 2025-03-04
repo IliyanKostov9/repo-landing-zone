@@ -42,6 +42,7 @@ remove_secret() {
 github_set_secret(){
     local env_name=$1
     local env_value=$2
+    echo "Setting secret for $env_name with value $env_value"
     local owners_count=$(yaml_eval ".owners | length")
 
     for (( ow_count=0; ow_count < owners_count; ow_count++ )) do
@@ -95,6 +96,5 @@ github_set_secret(){
 # github_set_secret "$1" "$2"
 for arg in "$@"; do
     IFS="=" read -r env_name env_value <<< "$arg"
-    echo "Setting secret for $env_name with value $env_value"
     github_set_secret "$env_name" "$env_value"
 done
