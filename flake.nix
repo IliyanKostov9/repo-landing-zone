@@ -16,14 +16,26 @@
     extra-substituters = "https://devenv.cachix.org";
   };
 
-  outputs = inputs@{ nixpkgs, flake-parts, devenv-root, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = inputs @ {
+    nixpkgs,
+    flake-parts,
+    devenv-root,
+    ...
+  }:
+    flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         inputs.devenv.flakeModule
       ];
       systems = nixpkgs.lib.systems.flakeExposed;
 
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
+      perSystem = {
+        config,
+        self',
+        inputs',
+        pkgs,
+        system,
+        ...
+      }: {
         devenv.shells.default = {
           name = "Landing zone project";
 
@@ -32,16 +44,15 @@
             shfmt = {
               enable = true;
               description = "Format shell files";
-              before = ''
-                beautysh */*.sh 
-              '';
+              # before = ''
+              #   beautysh */*.sh
+              # '';
             };
           };
 
-          devenv.root =
-            let
-              devenvRootFileContent = builtins.readFile devenv-root.outPath;
-            in
+          devenv.root = let
+            devenvRootFileContent = builtins.readFile devenv-root.outPath;
+          in
             pkgs.lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
 
           packages = with pkgs; [
