@@ -23,6 +23,13 @@ owners:
         secrets:
           enable: true
 
+      - name: portfolio
+        secrets:
+          enable: true
+          variables:
+            - GITGUARDIAN_API_KEY
+            - SONAR_TOKEN
+
       - name: flake-templates
         secrets:
           enable: true

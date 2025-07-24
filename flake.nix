@@ -6,14 +6,13 @@
       url = "file+file:///dev/null";
       flake = false;
     };
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/default";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.systems.follows = "nixpkgs";
+    };
     devenv.url = "github:cachix/devenv";
-  };
-
-  nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-substituters = "https://devenv.cachix.org";
   };
 
   outputs = inputs @ {
@@ -40,24 +39,28 @@
           name = "Landing zone project";
 
           git-hooks.hooks = {
-            beautysh.enable = true;
+            beautysh = {
+              enable = true;
+              excludes = [".envrc"];
+            };
             shfmt = {
               enable = true;
               description = "Format shell files";
+              excludes = [".envrc"];
               # before = ''
               #   beautysh */*.sh
               # '';
             };
           };
 
+          packages = with pkgs; [
+            yq-go
+          ];
+
           devenv.root = let
             devenvRootFileContent = builtins.readFile devenv-root.outPath;
           in
             pkgs.lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
-
-          packages = with pkgs; [
-            yq-go
-          ];
         };
       };
     };
