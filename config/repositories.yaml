@@ -11,6 +11,12 @@ owners:
             - GIT_USERNAME
             - GIT_PASSWORD
 
+      - name: nixos-wsl
+        secrets:
+          enable: true
+          variables:
+            - GITGUARDIAN_API_KEY
+
       - name: nvim-config
         secrets:
           enable: true
