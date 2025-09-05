@@ -32,6 +32,7 @@ jobs:
             "GITGUARDIAN_API_KEY=${{ secrets.GITGUARDIAN_API_KEY }}" \
             "GIT_PASSWORD=${{ secrets.GIT_PASSWORD }}" \
             "GIT_USERNAME=${{ secrets.GIT_USERNAME }}" \
+            "GIT_AUTO_MERGE=${{ secrets.GIT_AUTO_MERGE }}" \
             "SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}" \
             "TF_API_TOKEN=${{ secrets.TF_API_TOKEN }}" \
             "TF_ORG=${{ secrets.TF_ORG }}"
