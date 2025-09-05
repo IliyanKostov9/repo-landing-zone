@@ -7,6 +7,7 @@ owners:
         secrets:
           enable: true
           variables:
+            - GIT_AUTO_MERGE
             - GITGUARDIAN_API_KEY
             - GIT_USERNAME
             - GIT_PASSWORD
@@ -15,6 +16,7 @@ owners:
         secrets:
           enable: true
           variables:
+            - GIT_AUTO_MERGE
             - GITGUARDIAN_API_KEY
             - GIT_USERNAME
             - GIT_PASSWORD
@@ -27,6 +29,7 @@ owners:
         secrets:
           enable: true
           variables:
+            - GIT_AUTO_MERGE
             - GITGUARDIAN_API_KEY
             - SONAR_TOKEN
 
@@ -34,6 +37,7 @@ owners:
         secrets:
           enable: true
           variables:
+            - GIT_AUTO_MERGE
             - GITGUARDIAN_API_KEY
             - GIT_USERNAME
             - GIT_PASSWORD
