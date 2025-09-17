@@ -39,10 +39,6 @@
           name = "Landing zone project";
 
           git-hooks.hooks = {
-            beautysh = {
-              enable = true;
-              excludes = [".envrc"];
-            };
             shfmt = {
               enable = true;
               description = "Format shell files";

@@ -1,7 +1,7 @@
 ---
 owners:
   - name: IliyanKostov9
-    org: false
+    enable_on_org_level: false
     repos:
       - name: nixos-config
         secrets:
@@ -49,10 +49,10 @@ owners:
             - GIT_PASSWORD
 
   - name: Tu-Varna-2019
-    org: true
+    enable_on_org_level: true
 
   - name: ZProfile
-    org: false
+    enable_on_org_level: false
     repos:
       - name: android-client
         secrets:

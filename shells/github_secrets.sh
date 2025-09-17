@@ -16,7 +16,7 @@ set_secret() {
 	gh secret set "$env_name" --repo "$git_repo" --body "$env_value"
 }
 
-set_org_secret() {
+set_org_level_secret() {
 	local env_name=$1
 	local env_value=$2
 	local git_org=$3
@@ -49,15 +49,14 @@ github_set_secret() {
 
 		local owner_count_prefix=".owners[$ow_count]"
 		local owner_name=$(yaml_eval "$owner_count_prefix.name")
-		local owner_org=$(yaml_eval "$owner_count_prefix.org")
+		local enable_on_org_level=$(yaml_eval "$owner_count_prefix.enable_on_org_level")
 		local repos_count=$(yaml_eval "$owner_count_prefix.repos | length")
 
-		if [[ $owner_org == "true" ]]; then
+		if [[ $enable_on_org_level == "true" ]]; then
 			echo "Owner $owner_name has enabled org secrets!"
-			set_org_secret "$env_name" "$env_value" "$owner_name"
+			set_org_level_secret "$env_name" "$env_value" "$owner_name"
 
-		elif [[ $owner_org == "false" ]]; then
-
+		elif [[ $enable_on_org_level == "false" ]]; then
 			echo "Owner $owner_name has disabled org for secret. Moving on..."
 			echo "Checking secrets for owner: $owner_name"
 
