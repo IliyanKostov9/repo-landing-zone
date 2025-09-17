@@ -11,6 +11,7 @@ owners:
             - GITGUARDIAN_API_KEY
             - GIT_USERNAME
             - GIT_PASSWORD
+            - CACHIX_AUTH_TOKEN
 
       - name: nixos-wsl
         secrets:
@@ -38,6 +39,7 @@ owners:
             - GIT_AUTO_MERGE
             - GITGUARDIAN_API_KEY
             - SONAR_TOKEN
+            - CACHIX_AUTH_TOKEN
 
       - name: flake-templates
         secrets:
@@ -61,3 +63,4 @@ owners:
             - GIT_AUTO_MERGE
             - GITGUARDIAN_API_KEY
             - SONAR_TOKEN
+            - CACHIX_AUTH_TOKEN
