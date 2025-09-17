@@ -52,4 +52,11 @@ owners:
     org: true
 
   - name: ZProfile
-    org: true
+    org: false
+    repos:
+      - name: android-client
+        secrets:
+          enable: true
+          variables:
+            - GIT_AUTO_MERGE
+            - GITGUARDIAN_API_KEY
