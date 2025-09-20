@@ -56,7 +56,7 @@ owners:
   - name: ZProfile
     enable_on_org_level: false
     repos:
-      - name: android-client
+      - name: flutter-client
         secrets:
           enable: true
           variables:
