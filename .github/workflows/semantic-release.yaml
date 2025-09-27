@@ -51,4 +51,5 @@ jobs:
           gh repo push
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          REPO: ${{ inputs.repo }}
           RELEASE_BRANCH: release/v${{ inputs.version }}
