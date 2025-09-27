@@ -28,6 +28,7 @@ jobs:
         run: |
           gh repo clone $OWNER_REPO workspace/$REPO
           zip -r $REPO.zip workspace/$REPO
+          ls
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           OWNER_REPO: ${{ inputs.owner }}/${{ inputs.repo }}
