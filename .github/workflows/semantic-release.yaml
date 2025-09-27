@@ -33,18 +33,20 @@ jobs:
           OWNER_REPO: ${{ inputs.owner }}/${{ inputs.repo }}
           REPO: ${{ inputs.repo }}
 
-      - name: Semantic Release
-        run: |
-          cd "workspace/$REPO"
-          gh release create $VERSION --generate-notes "$REPO.zip#$VERSION"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          REPO: ${{ inputs.repo }}
-          VERSION: v${{ inputs.version }}
+      # - name: Semantic Release
+      #   run: |
+      #     cd "workspace/$REPO"
+      #     gh release create $VERSION --generate-notes "$REPO.zip#$VERSION"
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     REPO: ${{ inputs.repo }}
+      #     VERSION: v${{ inputs.version }}
 
       - name: Create a release branch
         run: |
+          ls
           cd "workspace/$REPO"
+          ls
           git checkout -b $RELEASE_BRANCH
           gh repo push
         env:
