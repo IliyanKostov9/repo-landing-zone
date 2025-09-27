@@ -44,12 +44,11 @@ jobs:
 
       - name: Create a release branch
         run: |
-          ls
           cd "workspace/$REPO"
-          ls
           git checkout -b $RELEASE_BRANCH
-          gh repo push
+          git push -u origin $RELEASE_BRANCH
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           REPO: ${{ inputs.repo }}
           RELEASE_BRANCH: release/v${{ inputs.version }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
