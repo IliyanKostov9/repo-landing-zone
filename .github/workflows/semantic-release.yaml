@@ -1,0 +1,50 @@
+name: Semantic release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: The version to release
+        required: true
+        type: string
+      owner:
+        description: The owner to release
+        required: true
+        type: choice
+        options:
+          - IliyanKostov9
+          - Tu-Varna-2019
+          - ZProfile
+      repo:
+        description: The repository to release
+        required: true
+        type: string
+
+jobs:
+  release:
+    name: Perform release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout & create an artifact
+        run: |
+          gh repo clone $OWNER_REPO workspace/$REPO
+          zip -r $REPO.zip workspace/$REPO
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          OWNER_REPO: ${{ inputs.owner }}/${{ inputs.repo }}
+          REPO: ${{ inputs.repo }}
+
+      - name: Semantic Release
+        run: |
+          gh release create $VERSION --generate-notes '$REPO.zip#$VERSION'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          VERSION: v${{ inputs.version }}
+
+      - name: Create a release branch
+        run: |
+          git checkout -b $RELEASE_BRANCH
+          gh repo push
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          RELEASE_BRANCH: release/v${{ inputs.version }}
+        working-directory: workspace/$REPO
