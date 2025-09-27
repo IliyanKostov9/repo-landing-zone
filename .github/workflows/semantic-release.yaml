@@ -35,7 +35,7 @@ jobs:
 
       - name: Semantic Release
         run: |
-          gh release create $VERSION --generate-notes '$REPO.zip#$VERSION'
+          gh release create $VERSION --generate-notes "$REPO.zip#$VERSION"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           VERSION: v${{ inputs.version }}
