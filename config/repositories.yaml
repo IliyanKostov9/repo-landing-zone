@@ -50,6 +50,15 @@ owners:
             - GIT_USERNAME
             - GIT_PASSWORD
 
+      - name: nerei
+        secrets:
+          enable: true
+          variables:
+            - GIT_AUTO_MERGE
+            - GITGUARDIAN_API_KEY
+            - GIT_USERNAME
+            - GIT_PASSWORD
+
   - name: Tu-Varna-2019
     enable_on_org_level: true
 
