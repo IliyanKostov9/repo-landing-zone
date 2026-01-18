@@ -30,7 +30,7 @@ owners:
 
       - name: .dotfiles
         secrets:
-          enable: true
+          enable: false
 
       - name: portfolio
         secrets:
