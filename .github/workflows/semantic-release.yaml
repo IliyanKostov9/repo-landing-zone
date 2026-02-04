@@ -70,7 +70,7 @@ jobs:
       - name: Create a release branch
         run: |
           cd "workspace/$REPO"
-          RELEASE_BRANCH=release/v$VERSION
+          RELEASE_BRANCH=release/$VERSION
 
           git config --global user.name "landing-zone"
           git config --global user.email "landing-zone@noreply.github.com"
