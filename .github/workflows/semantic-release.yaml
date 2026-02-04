@@ -2,14 +2,6 @@ name: Semantic release
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: The version number to release
-        required: true
-        type: choice
-        options:
-          - major
-          - minor
-          - patch
       owner:
         description: The owner to release
         required: true
@@ -22,6 +14,14 @@ on:
         description: The repository to release
         required: true
         type: string
+      version:
+        description: The version number to release
+        required: true
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
 
 jobs:
   release:
@@ -42,6 +42,7 @@ jobs:
           cd "workspace/$REPO"
           git fetch --tags
           version=$(git tag -l --sort=-version:refname | head -n 1)
+          declare -A sem_version_index_mapping=( ["major"]=0 ["minor"]=1 ["patch"]=2 )
 
           if [[ $version != "" ]]; then
             echo "Found the latest version is: $version"
