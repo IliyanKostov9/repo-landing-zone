@@ -39,7 +39,8 @@ jobs:
             "CACHIX_AUTH_TOKEN=${{ secrets.CACHIX_AUTH_TOKEN }}" \
             "PORTFOLIO_S3_AWS_KEY_ID=${{ secrets.PORTFOLIO_S3_AWS_KEY_ID }}" \
             "PORTFOLIO_S3_AWS_SECRET_ACCESS_KEY=${{ secrets.PORTFOLIO_S3_AWS_SECRET_ACCESS_KEY }}" \
-            "PORTFOLIO_S3_AWS_BUCKET=${{ secrets.PORTFOLIO_S3_AWS_BUCKET }}"
+            "PORTFOLIO_S3_AWS_BUCKET=${{ secrets.PORTFOLIO_S3_AWS_BUCKET }}" \
+            "GIT_PR_PUSH_UPDATES_CI=${{ secrets.GIT_PR_PUSH_UPDATES_CI }}"
 
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

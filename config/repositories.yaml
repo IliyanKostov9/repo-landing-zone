@@ -54,6 +54,7 @@ owners:
             - GIT_USERNAME
             - GIT_PASSWORD
             - CACHIX_AUTH_TOKEN
+            - GIT_PR_PUSH_UPDATES_CI
 
   - name: Tu-Varna-2019
     enable_on_org_level: false
