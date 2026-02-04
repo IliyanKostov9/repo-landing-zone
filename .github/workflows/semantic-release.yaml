@@ -19,9 +19,9 @@ on:
         required: true
         type: choice
         options:
-          - major
-          - minor
           - patch
+          - minor
+          - major
 
 jobs:
   release:
@@ -54,7 +54,7 @@ jobs:
 
             echo "Version bumped: $version"
 
-          else:
+          else
             version="v1.0.0"
             echo "Couldn't find version in repository $REPO. Creating a new fresh version: $version"
           fi
