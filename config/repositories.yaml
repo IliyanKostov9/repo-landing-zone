@@ -27,6 +27,7 @@ owners:
             - GITGUARDIAN_API_KEY
             - GIT_USERNAME
             - GIT_PASSWORD
+            - CACHIX_AUTH_TOKEN
 
       - name: .dotfiles
         secrets:
