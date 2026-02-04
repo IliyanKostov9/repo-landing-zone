@@ -53,6 +53,7 @@ owners:
             - GITGUARDIAN_API_KEY
             - GIT_USERNAME
             - GIT_PASSWORD
+            - CACHIX_AUTH_TOKEN
 
   - name: Tu-Varna-2019
     enable_on_org_level: false
