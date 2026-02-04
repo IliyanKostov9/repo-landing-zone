@@ -50,16 +50,16 @@ jobs:
             IFS=". " read -r -a array <<< "${version#v}"
             index=${sem_version_index_mapping[$VERSION_TYPE]}
             echo "$((array[$index]++))"
-            version="v$( IFS=$". "; echo "${array[*]}")"
+            VERSION="v$( IFS=$". "; echo "${array[*]}")"
 
-            echo "Version bumped: $version"
+            echo "Version bumped: $VERSION"
 
           else
-            version="v1.0.0"
-            echo "Couldn't find version in repository $REPO. Creating a new fresh version: $version"
+            VERSION="v1.0.0"
+            echo "Couldn't find version in repository $REPO. Creating a new fresh version: $VERSION"
           fi
 
-          gh release create $version --generate-notes "$REPO.zip#$version"
+          gh release create $VERSION --generate-notes "$REPO.zip#$VERSION"
 
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -69,6 +69,8 @@ jobs:
       - name: Create a release branch
         run: |
           cd "workspace/$REPO"
+          RELEASE_BRANCH=release/v$VERSION
+
           git config --global user.name "landing-zone"
           git config --global user.email "landing-zone@noreply.github.com"
           git checkout -b $RELEASE_BRANCH
@@ -78,6 +80,5 @@ jobs:
           GIT_PUSH: ${{ secrets.GIT_PUSH }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           REPO: ${{ inputs.repo }}
-          RELEASE_BRANCH: release/v${{ inputs.version }}
           OWNER_REPO: ${{ inputs.owner }}/${{ inputs.repo }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
