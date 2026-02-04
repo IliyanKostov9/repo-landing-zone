@@ -3,9 +3,13 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: The version to release
+        description: The version number to release
         required: true
-        type: string
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
       owner:
         description: The owner to release
         required: true
@@ -36,11 +40,30 @@ jobs:
       - name: Semantic Release
         run: |
           cd "workspace/$REPO"
-          gh release create $VERSION --generate-notes "$REPO.zip#$VERSION"
+          git fetch --tags
+          version=$(git tag -l --sort=-version:refname | head -n 1)
+
+          if [[ $version != "" ]]; then
+            echo "Found the latest version is: $version"
+
+            IFS=". " read -r -a array <<< "${version#v}"
+            index=${sem_version_index_mapping[$VERSION_TYPE]}
+            echo "$((array[$index]++))"
+            version="v$( IFS=$". "; echo "${array[*]}")"
+
+            echo "Version bumped: $version"
+
+          else:
+            version="v1.0.0"
+            echo "Couldn't find version in repository $REPO. Creating a new fresh version: $version"
+          fi
+
+          gh release create $version --generate-notes "$REPO.zip#$version"
+
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           REPO: ${{ inputs.repo }}
-          VERSION: v${{ inputs.version }}
+          VERSION_TYPE: ${{ inputs.version }}
 
       - name: Create a release branch
         run: |
