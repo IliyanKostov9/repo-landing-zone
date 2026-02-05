@@ -45,4 +45,4 @@ jobs:
                   done
               done
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GIT_WORKFLOW }}
