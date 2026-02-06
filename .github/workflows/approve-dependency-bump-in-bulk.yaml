@@ -32,7 +32,7 @@ jobs:
                 mapfile -t pr_numbers < <(echo "$pull_requests" | awk '{print $1}')
                 for pr_number in "${pr_numbers[@]}"
                   do
-                    gh pr update-branch $pr_number --repo "$owner_and_repo" || true
+                    gh pr update-branch $pr_number --rebase --repo "$owner_and_repo" || true
                     gh pr merge $pr_number --repo "$owner_and_repo" --admin --subject "Landing zone auto merge" --body "Merge performed" --delete-branch --squash || true
 
                     echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
