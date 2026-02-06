@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "sunday"
-      timezone: "Europe/Sofia"
+      timezone: "Europe/Paris"
     commit-message:
       prefix: "[github-action] "
     assignees:
