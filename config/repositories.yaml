@@ -12,6 +12,7 @@ owners:
             - GIT_USERNAME
             - GIT_PASSWORD
             - CACHIX_AUTH_TOKEN
+            - SONAR_TOKEN
 
       - name: nixos-wsl
         secrets:
