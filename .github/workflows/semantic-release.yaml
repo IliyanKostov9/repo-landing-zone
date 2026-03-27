@@ -49,9 +49,19 @@ jobs:
 
             IFS=". " read -r -a array <<< "${version#v}"
             index=${sem_version_index_mapping[$VERSION_TYPE]}
-            echo "$((array[$index]++))"
-            VERSION="v$( IFS=$". "; echo "${array[*]}")"
 
+            # NOTE: Iterate to the selected version type
+            echo "$((array[$index]++))"
+
+            # NOTE: Reset minor/patch version, depending to version type
+            if [[ "$VERSION_TYPE" == "major" ]]; then
+                echo "$((array[1]=0))"
+                echo "$((array[2]=0))"
+            elif [[ "$VERSION_TYPE" == "minor" ]]; then
+                echo "$((array[2]=0))"
+            fi
+
+            VERSION="v$( IFS=$". "; echo "${array[*]}")"
             echo "Version bumped: $VERSION"
 
           else
