@@ -44,6 +44,8 @@ owners:
             - CACHIX_AUTH_TOKEN
             - PORTFOLIO_S3_AWS_KEY_ID
             - PORTFOLIO_S3_AWS_SECRET_ACCESS_KEY
+            - PORTFOLIO_TF_AWS_KEY_ID
+            - PORTFOLIO_TF_AWS_SECRET_ACCESS_KEY
             - PORTFOLIO_S3_AWS_BUCKET
 
       - name: flake-templates
