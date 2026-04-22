@@ -48,6 +48,7 @@ owners:
             - PORTFOLIO_TF_AWS_SECRET_ACCESS_KEY
             - PORTFOLIO_S3_AWS_BUCKET
             - TF_API_TOKEN
+            - PORTFOLIO_GPG_KEY
 
       - name: flake-templates
         secrets:
