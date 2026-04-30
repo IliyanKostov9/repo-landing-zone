@@ -30,9 +30,14 @@ owners:
             - GIT_PASSWORD
             - CACHIX_AUTH_TOKEN
 
-      - name: .dotfiles
+      - name: aws-account-provision
         secrets:
-          enable: false
+          enable: true
+          variables:
+            - GIT_AUTO_MERGE
+            - GITGUARDIAN_API_KEY
+            - CACHIX_AUTH_TOKEN
+            - GIT_PR_PUSH_UPDATES_CI
 
       - name: portfolio
         secrets:
