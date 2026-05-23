@@ -39,7 +39,9 @@ jobs:
             "PORTFOLIO_S3_AWS_SECRET_ACCESS_KEY=${{ secrets.PORTFOLIO_S3_AWS_SECRET_ACCESS_KEY }}" \
             "PORTFOLIO_S3_AWS_BUCKET=${{ secrets.PORTFOLIO_S3_AWS_BUCKET }}" \
             "GIT_PR_PUSH_UPDATES_CI=${{ secrets.GIT_PR_PUSH_UPDATES_CI }}" \
-            "PORTFOLIO_AGE_KEY=${{ secrets.PORTFOLIO_AGE_KEY }}"
+            "PORTFOLIO_AGE_KEY=${{ secrets.PORTFOLIO_AGE_KEY }}" \
+            "TF_SOPHIA_AWS_KEY_ID=${{ secrets.TF_SOPHIA_AWS_KEY_ID }}" \
+            "TF_SOPHIA_AWS_SECRET_ACCESS_KEY=${{ secrets.TF_SOPHIA_AWS_SECRET_ACCESS_KEY }}"
 
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
