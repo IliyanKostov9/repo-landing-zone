@@ -2,11 +2,12 @@
 name: Repos sync
 on:
   push:
+    branches:
+      - master
     paths:
       - .github/workflows/repo-sync.yaml
       - shells/github_secrets.sh
       - config/repositories.yaml
-
   workflow_dispatch:
 
 jobs:

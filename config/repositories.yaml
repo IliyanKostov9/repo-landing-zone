@@ -50,7 +50,8 @@ owners:
             - GITGUARDIAN_API_KEY
             - SONAR_TOKEN
             - CACHIX_AUTH_TOKEN
-            - TF_API_TOKEN
+            - TF_SOPHIA_AWS_KEY_ID
+            - TF_SOPHIA_AWS_SECRET_ACCESS_KEY
             - PORTFOLIO_AGE_KEY
 
       - name: flake-templates
