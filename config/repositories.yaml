@@ -54,6 +54,7 @@ owners:
             - TF_SOPHIA_AWS_KEY_ID
             - TF_SOPHIA_AWS_SECRET_ACCESS_KEY
             - PORTFOLIO_AGE_KEY
+            - PORTFOLIO_S3_ASSETS_PROD_BUCKET
 
       - name: flake-templates
         secrets:
