@@ -41,6 +41,8 @@ owners:
             - SONAR_TOKEN
             - TF_SOPHIA_AWS_KEY_ID
             - TF_SOPHIA_AWS_SECRET_ACCESS_KEY
+            - TF_ARMADEUS_AWS_KEY_ID
+            - TF_ARMADEUS_AWS_SECRET_ACCESS_KEY
             - PORTFOLIO_AGE_KEY
 
       - name: portfolio
