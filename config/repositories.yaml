@@ -29,6 +29,7 @@ owners:
             - GITGUARDIAN_API_KEY
             - GIT_USERNAME
             - GIT_PASSWORD
+            - GIT_PR_PUSH_UPDATES_CI
             - CACHIX_AUTH_TOKEN
 
       - name: aws-account-provision
