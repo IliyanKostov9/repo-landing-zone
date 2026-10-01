@@ -89,11 +89,11 @@ owners:
   - name: ZProfile
     enable_on_org_level: false
     repos:
-      - name: flutter-client
-        secrets:
-          enable: true
-          variables:
-            - GIT_AUTO_MERGE
-            - GITGUARDIAN_API_KEY
-            - SONAR_TOKEN
-            - CACHIX_AUTH_TOKEN
+      # - name: flutter-client
+      #   secrets:
+      #     enable: true
+      #     variables:
+      #       - GIT_AUTO_MERGE
+      #       - GITGUARDIAN_API_KEY
+      #       - SONAR_TOKEN
+      #       - CACHIX_AUTH_TOKEN
